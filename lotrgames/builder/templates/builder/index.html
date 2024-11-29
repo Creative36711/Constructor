@@ -1,0 +1,106 @@
+{% extends 'builder/base.html' %}
+{% load static %}
+
+{% block content %}
+<div id="Container">
+  <form class="form" data-nav-module="Конструктор карт">
+      <div class="close-modal display-none">
+          <img src="{% static 'builder/img/icon-remove.jpg' %}">
+      </div>
+      <div class="form-lable h1" id="main-label">Конструктор карт</div>
+      <div class="container container-main">
+          <input class="form-content" id="map-name" type="text" placeholder="Название карты" autocomplete="off" />
+          <input class="form-content button" id="game-mode" type="button" value="Режим игры"/>
+          <input class="form-content button" id="map-design" type="button" value="Дизайн карты" />
+          <input class="form-content button" id="map-configuration" type="button" value="Конфигурация карты" />
+          <input class="form-content button" id="object-editor" type="button" value="Редактировать объекты" />
+      </div>
+
+    <div class="container-modes display-none">
+      <div class="card">
+        <img src="{% static 'builder/img/Tower Defence.jpg' %}">
+        <div class="card__head">Tower Defence</div>
+      </div>
+      <div class="card">
+        <img src="{% static 'builder/img/Base Defence.jpg' %}">
+        <div class="card__head">Base Defence</div>
+      </div>
+      <div class="card">
+        <img src="{% static 'builder/img/Capture the Flag.jpg' %}">
+        <div class="card__head">Capture the Flag</div>
+      </div>
+      <div class="card">
+        <img src="{% static 'builder/img/Battle Royale.jpg' %}">
+        <div class="card__head">Battle Royale</div>
+      </div>
+      <div class="card">
+        <img src="{% static 'builder/img/Deathmatch.jpg' %}">
+        <div class="card__head">Deathmatch</div>
+      </div>
+      <div class="card">
+        <img src="{% static 'builder/img/Moba.jpg' %}">
+        <div class="card__head">Moba</div>
+      </div>
+      <div class="card">
+        <img src="{% static 'builder/img/Survival.jpg' %}">
+        <div class="card__head">Survival</div>
+      </div>
+      <div class="card">
+        <img src="{% static 'builder/img/Co-op.jpg' %}">
+        <div class="card__head">Co-op</div>
+      </div>
+    </div>
+
+    <div class="container-design display-none">
+      <ul>
+      </ul>
+    </div>
+
+    <div class="container-configuration display-none">
+    </div>
+
+    <div class="container-objects display-none">
+      <div class="list-factions container">
+        <input class="form-content button" id="Men" type="button" value="Гондор"/>
+        <input class="form-content button" id="Rohan" type="button" value="Рохан"/>
+        <input class="form-content button" id="Arnor" type="button" value="Арнор"/>
+        <input class="form-content button" id="Elves" type="button" value="Лотлориен"/>
+        <input class="form-content button" id="Imladris" type="button" value="Имладрис"/>
+        <input class="form-content button" id="Dwarves" type="button" value="Гномы"/>
+        <input class="form-content button" id="Isengard" type="button" value="Изенгард"/>
+        <input class="form-content button" id="Mordor" type="button" value="Мордор"/>
+        <input class="form-content button" id="Wild" type="button" value="Мглистые горы"/>
+        <input class="form-content button" id="Harad" type="button" value="Харад"/>
+        <input class="form-content button" id="Angmar" type="button" value="Ангмар"/>
+        <input class="form-content button" id="Neutral" type="button" value="Нейтральные"/>
+      </div>
+      <div class="list-kindOf container display-none">
+        <div class="radio-item"><input name="objectType" id="SingleUnits" type="radio" checked><label for="SingleUnits">Одиночные объекты</label></div>
+        <div class="radio-item"><input name="objectType" id="Horde" type="radio"><label for="Horde">Отряды</label></div>
+        <input class="form-content button swordsman" data-filter="Swordsman" type="button" value="Мечники"/>
+        <input class="form-content button pike" data-filter="Pike" type="button" value="Копейщики"/>
+        <input class="form-content button archer" data-filter="Archer" type="button" value="Лучники"/>
+        <input class="form-content button cavalry" data-filter="Cavalry" type="button" value="Кавалерия"/>
+        <input class="form-content button hero" data-filter="Hero" type="button" value="Герои"/>
+        <input class="form-content button monster" data-filter="Monster" type="button" value="Монстры"/>
+        <input class="form-content button siegeengine" data-filter="Siegeengine" type="button" value="Осадные орудия"/>
+        <input class="form-content button swordsman-horde display-none" data-filter="Swordsman-horde" type="button" value="Мечники"/>
+        <input class="form-content button pike-horde display-none" data-filter="Pike-horde" type="button" value="Копейщики"/>
+        <input class="form-content button archer-horde display-none" data-filter="Archer-horde" type="button" value="Лучники"/>
+        <input class="form-content button cavalry-horde display-none" data-filter="Cavalry-horde" type="button" value="Кавалерия"/>
+        <input class="form-content button" data-filter="All" type="button" value="Все объекты"/>
+      </div>
+      <div class="list-objects display-none">
+        <ul>
+        </ul>
+      </div>
+      <div class="view-object container display-none">
+      </div>
+    </div>
+
+    <button id="map-save">Сохранить</button>
+    <button id="map-create">Создать карту</button>
+  </form>
+</div>
+
+{% endblock%}

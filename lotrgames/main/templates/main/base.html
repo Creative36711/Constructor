@@ -1,0 +1,314 @@
+{% load static %}
+{% load main_tags %}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Amin Template">
+    <meta name="keywords" content="Amin, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'main/img/favicon.ico' %}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'main/css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'main/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'main/css/barfiller.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'main/css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'main/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+</head>
+
+<body>
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Humberger Menu Begin -->
+    <div class="humberger-menu-overlay"></div>
+    <div class="humberger-menu-wrapper">
+        <div class="hw-logo">
+            <a href="{% url 'home' %}"><img src="{% static 'main/img/logo.png' %}" alt=""></a>
+        </div>
+        <div class="hw-menu mobile-menu">
+            <ul>
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'news' %}">Новости <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown">
+                        {% for c in cats %}
+                        <li><a href="{{ c.get_absolute_url }}">{{c.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li><a href="{% url 'builder' %}">Конструктор карт</a></li>
+                <li><a href="#">Мод <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="https://ennorathmod.ru/" target="_blank">Сайт</a></li>
+                        <li><a href="https://discord.com/channels/278875881525477377/1189583044252803123" target="_blank">Дискорд</a></li>
+                        <li><a href="https://www.youtube.com/@FatCatBFME" target="_blank">Ютуб</a></li>
+                        <li><a href="https://www.twitch.tv/1fatcat1" target="_blank">Твич</a></li>
+                        <li><a href="https://t.me/+MpR6XiJtLBxkMjVi" target="_blank">Телеграм</a></li>
+                        <li><a href="https://vk.com/ennorathmod" target="_blank">Вконтакте</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="hw-copyright">
+            Авторские права © 2024 Lotrgames. Все права защищены.
+        </div>
+        <div class="hw-social">
+            <a href="https://www.youtube.com/@FatCatBFME" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.twitch.tv/1fatcat1" target="_blank"><i class="fa-brands fa-twitch"></i></a>
+            <a href="https://discord.com/channels/278875881525477377/1189583044252803123" target="_blank"><i class="fa-brands fa-discord"></i></a>
+            <a href="https://t.me/+MpR6XiJtLBxkMjVi" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+        </div>
+        <div class="hw-insta-media">
+            <div class="section-title">
+                <h5>Изображения</h5>
+            </div>
+            <div class="insta-pic">
+                <img src="img/instagram/ip-1.jpg" alt="">
+                <img src="img/instagram/ip-2.jpg" alt="">
+                <img src="img/instagram/ip-3.jpg" alt="">
+                <img src="img/instagram/ip-4.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- Humberger Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="ht-options">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-8">
+                        <div class="ht-widget">
+                            <ul>
+                                <li><i class="fa fa-sun-o"></i> <span>20<sup>c</sup></span> Москва</li>
+                                <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                <li class="signup-switch signup-open"><i class="fa fa-sign-out"></i> Вход / Зарегистрироваться
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-4">
+                        <div class="ht-social">
+                            <a href="https://www.youtube.com/@FatCatBFME" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="https://www.twitch.tv/1fatcat1" target="_blank"><i class="fa-brands fa-twitch"></i></a>
+                            <a href="https://discord.com/channels/278875881525477377/1189583044252803123" target="_blank"><i class="fa-brands fa-discord"></i></a>
+                            <a href="https://t.me/+MpR6XiJtLBxkMjVi" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                            <a href="https://ennorathmod.ru/" target="_blank"><i class="fa-solid fa-cloud"></i></a>
+                            <a href="https://discord.com/users/creative6158/" target="_blank"><i class="fa-solid fa-address-card"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="logo">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                       <a href="{% url 'home' %}"><img src="{% static 'main/img/logo.png' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-options">
+            <div class="container">
+                <div class="humberger-menu humberger-open">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <div class="nav-search search-switch">
+                    <i class="fa fa-search"></i>
+                </div>
+                <div class="nav-menu">
+                    <ul>
+
+                        <li class="{% if title == 'Главная страница' %} active {% endif %}"><a href="{% url 'home' %}"><span>Главная</span></a></li>
+
+                        <li class="{% if title == 'Новости' %} active {% endif %}"><a href="{% url 'news' %}"><span>Новости <i class="fa fa-angle-down"></i></span></a>
+                            <ul class="dropdown">
+                                {% for c in cats %}
+                                <li><a href="{{ c.get_absolute_url }}">{{c.name}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'builder' %}"><span>Конструктор карт</span></a></li>
+                        <li><a href="#"><span>Мод <i class="fa fa-angle-down"></i></span></a>
+                            <ul class="dropdown">
+                                <li><a href="https://ennorathmod.ru/" target="_blank">Сайт</a></li>
+                                <li><a href="https://discord.com/channels/278875881525477377/1189583044252803123" target="_blank">Дискорд</a></li>
+                                <li><a href="https://www.youtube.com/@FatCatBFME" target="_blank">Ютуб</a></li>
+                                <li><a href="https://www.twitch.tv/1fatcat1" target="_blank">Твич</a></li>
+                                <li><a href="https://t.me/+MpR6XiJtLBxkMjVi" target="_blank">Телеграм</a></li>
+                                <li><a href="https://vk.com/ennorathmod" target="_blank">Вконтакте</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Details Post Section Begin -->
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Details Post Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="footer-about">
+                        <div class="fa-logo">
+                            <a href="#"><img src="{% static 'main/img/logo.png' %}" alt=""></a>
+                        </div>
+                            <p>Разработка карт и сабмодов на игру The Lord of the Rings: The Battle for Middle‑earth с модом Ennorath.</p>
+                        <div class="fa-social">
+                            <a href="https://www.youtube.com/@FatCatBFME" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="https://www.twitch.tv/1fatcat1" target="_blank"><i class="fa-brands fa-twitch"></i></a>
+                            <a href="https://discord.com/channels/278875881525477377/1189583044252803123" target="_blank"><i class="fa-brands fa-discord"></i></a>
+                            <a href="https://t.me/+MpR6XiJtLBxkMjVi" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="editor-choice">
+                        <div class="section-title">
+                            <h5>Последние обновления</h5>
+                        </div>
+                        <div class="ec-item">
+                            <div class="ec-pic">
+                                <img src="img/trending/editor-1.jpg" alt="">
+                            </div>
+                            <div class="ec-text">
+                                <h6><a href="#">A Monster Prom poster got hijacked for a Papa Roach concert...</a>
+                                </h6>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                    <li><i class="fa fa-comment-o"></i> 12</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ec-item">
+                            <div class="ec-pic">
+                                <img src="img/trending/editor-2.jpg" alt="">
+                            </div>
+                            <div class="ec-text">
+                                <h6><a href="#">Facebook wants to read your thoughts with its augmented...</a>
+                                </h6>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                    <li><i class="fa fa-comment-o"></i> 12</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="tags-cloud">
+                        <div class="section-title">
+                            <h5>Теги</h5>
+                        </div>
+                        <div class="tag-list">
+                            <a href="#"><span>Gaming</span></a>
+                            <a href="#"><span>Platform</span></a>
+                            <a href="#"><span>Playstation</span></a>
+                            <a href="#"><span>Hardware</span></a>
+                            <a href="#"><span>Reviews</span></a>
+                            <a href="#"><span>Simulation</span></a>
+                            <a href="#"><span>Strategy</span></a>
+                            <a href="#"><span>Scientific</span></a>
+                            <a href="#"><span>References</span></a>
+                            <a href="#"><span>Role-playing</span></a>
+                            <a href="#"><span>Adventurea</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright-area">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="ca-text"><p>
+                            Авторские права &copy;<script>document.write(new Date().getFullYear());</script> Lotrgames. Все права защищены.
+                        </p></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="ca-links">
+                            <a href="#">О проекте</a>
+                            <a href="#">Донат</a>
+                            <a href="#">Связаться</a>
+                            <a href="#">Помощь</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Sign Up Section Begin -->
+    <div class="signup-section">
+        <div class="signup-close"><i class="fa fa-close"></i></div>
+        <div class="signup-text">
+            <div class="container">
+                <div class="signup-title">
+                    <h2>Регистрация аккаунта</h2>
+                    <p>Заполните форму ниже</p>
+                </div>
+                <form action="#" class="signup-form">
+                    <div class="sf-input-list">
+                        <input type="text" class="input-value" placeholder="Никнейм*">
+                        <input type="text" class="input-value" placeholder="Пароль">
+                        <input type="text" class="input-value" placeholder="Подтвердите пароль">
+                        <input type="text" class="input-value" placeholder="Email">
+                    </div>
+                    <div class="radio-check">
+                        <label for="rc-agree">Я согласен с условиями
+                            <input type="checkbox" id="rc-agree">
+                            <span class="checkbox"></span>
+                        </label>
+                    </div>
+                    <button type="submit"><span>ЗАРЕГИСТРИРОВАТЬСЯ</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Sign Up Section End -->
+
+    <!-- Search model Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Поиск.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
+
+    <!-- Js Plugins -->
+    <script src="{% static 'main/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'main/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'main/js/circle-progress.min.js' %}"></script>
+    <script src="{% static 'main/js/jquery.barfiller.js' %}"></script>
+    <script src="{% static 'main/js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'main/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'main/js/main.js' %}"></script>
+</body>
+
+</html>

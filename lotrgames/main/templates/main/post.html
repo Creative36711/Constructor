@@ -1,0 +1,51 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load main_tags %}
+
+{% block content %}
+    <!-- Details Hero Section Begin -->
+    <section class="details-hero-section set-bg" data-setbg="{{post.photo.url}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="details-hero-text">
+                        {% for t in tags %}
+                        <div class="label"><span>{{t}}</span></div>
+                        {% endfor %}
+                        <h3>{{post.title}}</h3>
+                        <ul>
+                            <li>by <span>{{post.author}}</span></li>
+                            <li><i class="fa fa-clock-o"></i> {{post.time_update|date:"d-m-Y H:i:s"}}</li>
+                            <li><i class="fa fa-comment-o"></i> {{post.views}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Details Hero Section End -->
+
+    <!-- Details Post Section Begin -->
+    <section class="details-post-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 p-0">
+                    <div class="details-text">
+                        <div class="dt-item">
+                            {% autoescape off %}
+                            {{post.content|linebreaks}}
+                            {% endautoescape %}
+                        </div>
+                        <div class="dt-tags">
+                            {% for t in tags %}
+                            <a href="#"><span>{{t}}</span></a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% show_sidebar %}
+            </div>
+        </div>
+    </section>
+    <!-- Details Post Section End -->
+{% endblock %}

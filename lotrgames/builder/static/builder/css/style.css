@@ -1,0 +1,723 @@
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+  background-color: #2F4F4F;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(144deg, #FF0000, #B22222 50%, #DC143C);
+}
+
+
+* {
+    cursor: url('../img/cursors/SCCpointer.ico'), default;
+}
+
+.element-blocked {
+    cursor: url('../img/cursors/SCCNoAction.cur'), default;
+}
+
+body {
+    background: #000000;
+}
+
+/* Загрузка */
+
+/* Шапка */
+
+header {
+  display: block;
+  position: fixed;
+  top: 0;
+  padding-top: 10px;
+  width: 100vw;
+  display: flex;
+}
+
+.header-element {
+    margin-right: 10px;
+}
+
+/* Кнопка назад */
+
+/* From Uiverse.io by vinodjangid07 */
+.Btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 59px;
+  height: 59px;
+  border: none;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: rgb(220, 20, 60);
+}
+
+/* plus sign */
+.sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign svg {
+  width: 17px;
+}
+
+.sign svg path {
+  fill: white;
+}
+/* text */
+.text {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition-duration: .3s;
+}
+/* hover effect on button width */
+.Btn:hover {
+  width: 125px;
+  border-radius: 40px;
+  transition-duration: .3s;
+}
+
+.Btn:hover .sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 20px;
+}
+/* hover effect button's text */
+.Btn:hover .text {
+  opacity: 1;
+  width: 60%;
+  transition-duration: .3s;
+  padding-right: 10px;
+}
+/* button click effect*/
+.Btn:active {
+  transform: translate(2px ,2px);
+}
+
+/* Чекбокс управления музыкой */
+
+.volume {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  background-color: rgb(0, 128, 0);
+  overflow: hidden;
+  position: relative;
+}
+.volume-icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+  overflow: hidden;
+  position: relative;
+}
+.volume-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 999;
+}
+.volume-icon:before {
+  content: "";
+  display: flex;
+  width: 0px;
+  height: 0px;
+  border-radius: 100%;
+  transition: all 0.2s ease;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(220, 20, 60);
+}
+.volume-input:checked + .volume-icon:before {
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+}
+.volume-svg {
+  z-index: 2;
+  color: rgb(32, 33, 36);
+  height: 30px;
+  width: 30px;
+}
+.volume-input:checked + .volume-icon svg {
+  filter: invert(1);
+}
+
+/* Видео заставка */
+
+.video-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1000;
+    overflow: hidden;
+}
+
+#myVideo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1000;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* Форма на главной странице */
+
+.content {
+    position: relative;
+    z-index: 1;
+}
+
+#Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.form {
+  position: relative;
+  top: 5em;
+  padding: 4%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  border: 4px solid #fff;
+  background: rgba(178, 34, 34, 0.8);
+  box-shadow: 0px 0px 64px 0px #B22222 inset, 0px 0px 16px #8B0000;
+  backdrop-filter: blur(3.5px);
+  gap: 1em;
+}
+
+.form-lable {
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 8px;
+  text-shadow: 0px 0px 16px rgb(243, 243, 243);
+}
+
+.h1 {
+  font-size: 2rem;
+}
+
+.h2 {
+  font-size: 1.3rem;
+}
+
+.form-content {
+  height: 3em;
+  padding: 1px 8px;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 2px solid #fff;
+  background: rgba(0, 0, 0, 0.486);
+  box-shadow: 0px 0px 1px 3px #B22222 inset, 0px 4px 4px 0px #FF0000;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+  text-shadow: 0px 1px 4px rgb(243, 243, 243);
+}
+
+.form-content-filled {
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-shadow: 0px 1px 4px rgb(243, 243, 243);
+}
+
+.form-content:focus-visible {
+  outline: none;
+  text-decoration: none;
+  background: rgba(255, 0, 0, 0.59);
+  box-shadow: 0px 0px 1px 4px #FF0000;
+}
+
+.form-content:hover {
+  background: rgba(255, 0, 0, 0.59);
+}
+
+::placeholder {
+  color: #DCDCDC;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+  text-shadow: 0px 1px 5px rgb(66, 66, 66);
+}
+
+.form button {
+  height: 3.5rem;
+  padding: 0%;
+  color: white;
+  font-size: 1.5em;
+  letter-spacing: 0.3rem;
+  border: 2px solid white;
+  background: linear-gradient(144deg, #9c11ffce, #2000eeb6 50%, #15efffbb);
+}
+
+.form button:hover {
+  position: relative;
+  bottom: 4px;
+  background: linear-gradient(144deg, #9c11ff, #2000ee 50%, #15fff3);
+  box-shadow: 0px 0px 2px 2px #ffffff;
+}
+
+.button {
+    padding-right: 97%;
+    height: 46px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  grid-gap: 5px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 15px;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  height: 0;
+  opacity: 0;
+}
+
+.input-blocked {
+    cursor: url('../img/cursors/SCCNoAction.cur'), default;
+    color: #DCDCDC;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+    text-shadow: 0px 1px 5px rgb(66, 66, 66);
+}
+
+hr {
+  border-top: 1px dotted white;
+  width: 100%
+}
+
+.cross {
+    display: flex;
+    justify-content: right;
+    position: relative;
+    font-size: 20px;
+}
+
+.cross span {
+    position: absolute;
+    top: -18px;
+}
+
+.cross span:hover {
+    transform: scale(1.5);
+}
+
+.close-modal {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+}
+
+.close-modal img {
+    width: 45px;
+    height 45px;
+}
+
+.close-modal img:hover {
+    filter: invert(0.8);
+}
+
+/* Выбор режима - галерея */
+
+.container-modes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5vmin;
+  margin-bottom: 5vmin;
+  overflow: hidden;
+  transform: skew(5deg);
+
+  .card {
+    flex: 1;
+    transition: all 1s ease-in-out;
+    height: 40vmin;
+    position: relative;
+    .card__head {
+      color: white;
+      padding: 0.5em;
+      transform: rotate(-90deg);
+      transform-origin: 0% 0%;
+      transition: all 0.5s ease-in-out;
+      min-width: 100%;
+      text-align: center;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      font-size: 1em;
+      white-space: nowrap;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 1s ease-in-out;
+      filter: grayscale(100%);
+      margin-right: 1em;
+    }
+    &:not(:last-child) {
+      margin-right: 1em;
+    }
+  }
+}
+
+.mode-available {
+    .card__head {
+        background: rgba(0, 100, 0, 0.5)!important;
+    }
+}
+
+.mode-unavailable {
+    .card__head {
+        background: rgba(139, 0, 0, 0.5);!important;
+    }
+}
+
+.card-active {
+    flex-grow: 10!important;
+    img {
+        filter: grayscale(0)!important;
+    }
+}
+
+.card__head-active {
+    text-align: center!important;
+    top: calc(100% - 2em)!important;
+    color: white!important;
+    font-size: 2em!important;
+    transform: rotate(0deg) skew(-5deg)!important;
+}
+
+
+/* Выбор дизайна карты - галерея */
+
+.container-design {
+
+    img {
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        transition: transform 1000ms;
+        width: 100%;
+        transform: scaleY(-1);
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 0.5rem;
+        max-width: 100%;
+        width: 70rem;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    }
+
+    figure {
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    figcaption {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        place-items: center;
+        text-align: center;
+        padding: 1rem;
+        color: white;
+        font-size: 1.2rem;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 600ms, transform 600ms;
+    }
+
+    figure::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200%;
+        height: 200%;
+        background: rgba(0, 0, 0, 0.5);
+        transform-origin: center;
+        opacity: 0;
+        transform: scale(2);
+        transition: opacity 300ms;
+    }
+
+    a:is(:hover, :focus) figure::after {
+        opacity: 1;
+    }
+
+    a:is(:hover, :focus) figcaption {
+        opacity: 1;
+        transition: opacity 600ms;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        figcaption {
+            transform: translate3d(0, 2rem, 0);
+        }
+
+        figure::after {
+            border-radius: 50%;
+            opacity: 1;
+            transform: scale(0);
+            transition: transform 900ms;
+        }
+
+        a:is(:hover, :focus) figure::after {
+            transform: scale(2.5);
+        }
+
+        a:is(:hover, :focus) figcaption {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+            transition: opacity 200ms 100ms, transform 200ms 100ms;
+        }
+    }
+
+}
+
+/* Чекбокс для формы */
+
+.customCheckBoxHolder {
+  display: flex;
+}
+
+.customCheckBox {
+  width: fit-content;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  padding: 2px 8px;
+  background-color: rgba(0, 0, 0, 0.16);
+  border-radius: 0px;
+  color: rgba(255, 255, 255, 0.7);
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 300ms;
+  transition-property: color, background-color, box-shadow;
+  display: flex;
+  height: 2.7em;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px 1px 1px 0px;
+  outline: none;
+  justify-content: center;
+  min-width: 55px;
+}
+
+.customCheckBox:hover {
+  background-color: #2c2c2c;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px;
+}
+
+.customCheckBox .inner {
+  font-size: 18px;
+  font-weight: 900;
+  pointer-events: none;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 300ms;
+  transition-property: transform;
+  transform: translateY(0px);
+}
+
+.customCheckBox:hover .inner {
+  transform: translateY(-2px);
+}
+
+/* Multiple Checkboxes can be chained together for a radio input */
+.customCheckBoxWrapper:first-of-type .customCheckBox {
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  border-right: 0px;
+}
+
+.customCheckBoxWrapper:last-of-type .customCheckBox {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  border-left: 0px;
+}
+
+.customCheckBoxInput {
+  display: none;
+}
+
+.customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox {
+  background-color: #2d6737;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px;
+}
+
+.customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox .inner {
+  transform: translateY(-2px);
+}
+
+.customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox:hover {
+  background-color: #34723f;
+  box-shadow: rgba(0, 0, 0, 0.26) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.15) 0px 3px 6px 2px;
+}
+
+.customCheckBoxWrapper .customCheckBox:hover .inner {
+  transform: translateY(-2px);
+}
+
+/* Галерея для объектов */
+
+.container-objects {
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type:  none;
+        li {
+            figure {
+                margin: 30px;
+                transition: transform 0.5s;
+                border-radius: 185px;
+                position: relative;
+                figcaption {
+                    top: 185px;
+                    position: absolute;
+                    text-align: center;
+                    color: white;
+                    font-weight: 600;
+                    text-shadow: 0px 0px 16px rgb(243, 243, 243);
+                    font-size: 20px;
+                }
+                img {
+                   border-radius: 100%;
+                }
+            }
+            figure:hover {
+               transform: scale(1.2);
+               z-index: 1;
+            }
+        }
+
+    }
+    .view-object img {
+        border: 10px ridge White;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 100%;
+        max-width: 300px;
+        max-height: 300px;
+    }
+}
+
+
+
+/* Радио кнопки */
+
+.radio-item [type="radio"] {
+	display: none;
+}
+
+.radio-item label {
+	display: block;
+	padding: 20px 60px;
+    background: rgba(0, 0, 0, 0.486);
+    border: 2px solid #fff;
+	border-radius: 6px;
+	font-size: 18px;
+	font-weight: 400;
+	min-width: 250px;
+	white-space: nowrap;
+	position: relative;
+	transition: 0.4s ease-in-out 0s;
+	color: white;
+	text-shadow: 0px 1px 4px rgb(243, 243, 243);
+	box-shadow: 0px 0px 1px 3px #B22222 inset, 0px 4px 4px 0px #FF0000;
+    letter-spacing: 0.1rem;
+}
+
+.radio-item label:after,
+.radio-item label:before {
+	content: "";
+	position: absolute;
+	border-radius: 50%;
+}
+.radio-item label:after {
+	height: 19px;
+	width: 19px;
+	border: 2px solid #8B0000;
+	left: 19px;
+	top: calc(50% - 12px);
+}
+.radio-item label:before {
+	background: red;
+	height: 20px;
+	width: 20px;
+	left: 21px;
+	top: calc(50%-5px);
+	transform: scale(5);
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.4s ease-in-out 0s;
+}
+.radio-item [type="radio"]:checked ~ label {
+	border-color: red;
+}
+.radio-item [type="radio"]:checked ~ label::before {
+	opacity: 1;
+	visibility: visible;
+	transform: scale(1);
+}
+
+
+/* Разные стили */
+
+.display-none {
+    display: none;
+}
+
+

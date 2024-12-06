@@ -7,8 +7,10 @@ class MapTemplates(models.Model):
     author = models.CharField(max_length=50, verbose_name="Автор")
     modes = models.CharField(max_length=255, verbose_name="Режимы")
     players = models.IntegerField(verbose_name="Максимум игроков")
+    data = models.TextField(blank=True, verbose_name="Технические данные")
     file = models.FileField(upload_to='map_design/template', verbose_name="Шаблон карты")
     art = models.FileField(upload_to="map_design/art", verbose_name="Арт")
+    img = models.FileField(upload_to="map_design/img", verbose_name="Изображение", blank=True) # убрать blank=True
     time_create = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
 
     def __str__(self):

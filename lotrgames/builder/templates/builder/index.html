@@ -3,17 +3,17 @@
 
 {% block content %}
 <div id="Container">
-  <form class="form" data-nav-module="Конструктор карт">
+  <form class="form" data-nav-module="Конструктор карт" data-context-menu="False">
       <div class="close-modal display-none">
           <img src="{% static 'builder/img/icon-remove.jpg' %}">
       </div>
       <div class="form-lable h1" id="main-label">Конструктор карт</div>
       <div class="container container-main">
-          <input class="form-content" id="map-name" type="text" placeholder="Название карты" autocomplete="off" />
+          <input class="form-content bull" id="map-name" type="text" placeholder="Название карты" autocomplete="off" />
           <input class="form-content button" id="game-mode" type="button" value="Режим игры"/>
           <input class="form-content button" id="map-design" type="button" value="Дизайн карты" />
           <input class="form-content button" id="map-configuration" type="button" value="Конфигурация карты" />
-          <input class="form-content button" id="object-editor" type="button" value="Редактировать объекты" />
+          <input class="form-content button" id="object-editor" type="button" value="Редактировние объектов" />
       </div>
 
     <div class="container-modes display-none">
@@ -64,7 +64,7 @@
         <input class="form-content button" id="Men" type="button" value="Гондор"/>
         <input class="form-content button" id="Rohan" type="button" value="Рохан"/>
         <input class="form-content button" id="Arnor" type="button" value="Арнор"/>
-        <input class="form-content button" id="Elves" type="button" value="Лотлориен"/>
+        <input class="form-content button" id="Elves" type="button" value="Лотлориэн"/>
         <input class="form-content button" id="Imladris" type="button" value="Имладрис"/>
         <input class="form-content button" id="Dwarves" type="button" value="Гномы"/>
         <input class="form-content button" id="Isengard" type="button" value="Изенгард"/>
@@ -75,19 +75,19 @@
         <input class="form-content button" id="Neutral" type="button" value="Нейтральные"/>
       </div>
       <div class="list-kindOf container display-none">
-        <div class="radio-item"><input name="objectType" id="SingleUnits" type="radio" checked><label for="SingleUnits">Одиночные объекты</label></div>
-        <div class="radio-item"><input name="objectType" id="Horde" type="radio"><label for="Horde">Отряды</label></div>
-        <input class="form-content button swordsman" data-filter="Swordsman" type="button" value="Мечники"/>
-        <input class="form-content button pike" data-filter="Pike" type="button" value="Копейщики"/>
-        <input class="form-content button archer" data-filter="Archer" type="button" value="Лучники"/>
-        <input class="form-content button cavalry" data-filter="Cavalry" type="button" value="Кавалерия"/>
-        <input class="form-content button hero" data-filter="Hero" type="button" value="Герои"/>
-        <input class="form-content button monster" data-filter="Monster" type="button" value="Монстры"/>
-        <input class="form-content button siegeengine" data-filter="Siegeengine" type="button" value="Осадные орудия"/>
-        <input class="form-content button swordsman-horde display-none" data-filter="Swordsman-horde" type="button" value="Мечники"/>
-        <input class="form-content button pike-horde display-none" data-filter="Pike-horde" type="button" value="Копейщики"/>
-        <input class="form-content button archer-horde display-none" data-filter="Archer-horde" type="button" value="Лучники"/>
-        <input class="form-content button cavalry-horde display-none" data-filter="Cavalry-horde" type="button" value="Кавалерия"/>
+        <div class="radio-item radio-single-units"><input name="objectType" id="SingleUnits" type="radio" checked><label for="SingleUnits">Одиночные объекты</label></div>
+        <div class="radio-item radio-horde"><input name="objectType" id="Horde" type="radio"><label for="Horde">Отряды</label></div>
+        <input class="form-content button button-single swordsman" data-filter="Swordsman" type="button" value="Мечники"/>
+        <input class="form-content button button-single pike" data-filter="Pike" type="button" value="Копейщики"/>
+        <input class="form-content button button-single archer" data-filter="Archer" type="button" value="Лучники"/>
+        <input class="form-content button button-single cavalry" data-filter="Cavalry" type="button" value="Кавалерия"/>
+        <input class="form-content button button-single hero" data-filter="Hero" type="button" value="Герои"/>
+        <input class="form-content button button-single monster" data-filter="Monster" type="button" value="Монстры"/>
+        <input class="form-content button button-single siegeengine" data-filter="Siegeengine" type="button" value="Осадные орудия"/>
+        <input class="form-content button button-horde swordsman-horde display-none" data-filter="Swordsman-horde" type="button" value="Мечники"/>
+        <input class="form-content button button-horde pike-horde display-none" data-filter="Pike-horde" type="button" value="Копейщики"/>
+        <input class="form-content button button-horde archer-horde display-none" data-filter="Archer-horde" type="button" value="Лучники"/>
+        <input class="form-content button button-horde cavalry-horde display-none" data-filter="Cavalry-horde" type="button" value="Кавалерия"/>
         <input class="form-content button" data-filter="All" type="button" value="Все объекты"/>
       </div>
       <div class="list-objects display-none">
@@ -98,8 +98,8 @@
       </div>
     </div>
 
-    <button id="map-save">Сохранить</button>
-    <button id="map-create">Создать карту</button>
+    <button class="main-button" id="map-save">Сохранить</button>
+    <button class="main-button" id="map-create">Создать карту</button>
   </form>
 </div>
 

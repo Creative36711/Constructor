@@ -275,7 +275,7 @@ header {
   text-shadow: 0px 1px 5px rgb(66, 66, 66);
 }
 
-.form button {
+.form .main-button {
   height: 3.5rem;
   padding: 0%;
   color: white;
@@ -285,7 +285,7 @@ header {
   background: linear-gradient(144deg, #9c11ffce, #2000eeb6 50%, #15efffbb);
 }
 
-.form button:hover {
+.form .main-button:hover {
   position: relative;
   bottom: 4px;
   background: linear-gradient(144deg, #9c11ff, #2000ee 50%, #15fff3);
@@ -441,7 +441,6 @@ hr {
         object-fit: cover;
         transition: transform 1000ms;
         width: 100%;
-        transform: scaleY(-1);
     }
 
     ul {
@@ -711,6 +710,91 @@ hr {
 	opacity: 1;
 	visibility: visible;
 	transform: scale(1);
+}
+
+/* Контекстное меню */
+
+.dropdown {
+  width: 165px;
+  position: absolute;
+  top: 100px;
+  left: 50px;
+}
+
+.dropdown li {
+  padding: 10px;
+  background: #A9A9A9;
+  color: #000000;
+  text-align: left;
+  width: 100%;
+  transition-property: all, background-color;
+  transition-duration: 0.2s, 0.4s;
+  border-top: 1px #696969 solid;
+  list-style-type: none;
+
+  &:hover, &.selected {
+    background-color: #C0C0C0;
+  }
+
+  &:last-child {
+    border-radius: 0px 0px 5px 5px;
+  }
+  &:first-child {
+    border-top: none;
+  }
+}
+
+.dropdown svg {
+    position: absolute;
+    right: 0;
+    top: 7px;
+}
+
+/* Кнопка additional-button */
+
+.additional-button {
+  width: 100%;
+  padding: 1.2em 1rem;
+  gap: 0.4rem;
+  font-weight: bold;
+  font-size: 0.8em;
+  letter-spacing: 0.1rem;
+  border-radius: 6px;
+  text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
+  background: linear-gradient(
+      15deg,
+      #185499,
+      #1B5DAA,
+      #1E67BD,
+      #2172D2,
+      #3080DE,
+      #2172D2,
+      #1E67BD,
+      #1B5DAA,
+      #185499
+    )
+    no-repeat;
+  background-size: 300%;
+  color: #fff;
+  border: none;
+  background-position: left center;
+  box-shadow: 0 30px 10px -20px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+
+.additional-button:hover {
+  background-size: 320%;
+  background-position: right center;
+}
+
+.additional-button:hover svg {
+  fill: #fff;
+}
+
+.additional-button svg {
+  width: 23px;
+  fill: #f09f33;
+  transition: 0.3s ease;
 }
 
 

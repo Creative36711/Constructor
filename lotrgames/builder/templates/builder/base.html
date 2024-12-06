@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'builder/img/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'builder/css/style.css' %}" type="text/css">
 </head>
 <body>
@@ -60,10 +61,16 @@
     <script src="{% static 'builder/js/elements.js' %}"></script>
     <script src="{% static 'builder/js/header.js' %}"></script>
     <script src="{% static 'builder/js/navigation.js' %}"></script>
-    <script src="{% static 'builder/js/initial.js' %}"></script>
-    <script src="{% static 'builder/js/objects.js' %}"></script>
-    <script src="{% static 'builder/js/modes/tower-defence.js' %}"></script>
-    <script src="{% static 'builder/js/main.js' %}"></script>
+
+    <script src="{% static 'builder/js/main/main.js' %}"></script>
+    <script src="{% static 'builder/js/main/objects.js' %}"></script>
+    <script src="{% static 'builder/js/main/main-nav.js' %}"></script>
+    <script src="{% static 'builder/js/main/objects-nav.js' %}"></script>
+
+    <script src="{% static 'builder/js/modes/tower-defence/tower-defence.js' %}"></script>
+    <script src="{% static 'builder/js/modes/tower-defence/tower-defence-nav.js' %}"></script>
+
+    <script src="{% static 'builder/js/index.js' %}"></script>
 
 </body>
 </html>

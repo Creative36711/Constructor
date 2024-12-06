@@ -39,7 +39,7 @@ function mapTemplateRender(){
                     var li = $('<li>', {'class': 'card-map'})
                     var a = $('<a>', {'href': '#'})
                     var figure = $('<figure>')
-                    var img = $('<img>', {'src': '../media/' + item.fields.art})
+                    var img = $('<img>', {'src': '../media/' + item.fields.img})
                     var figcaption = $('<figcaption>').html(item.fields.title + '<br/><br/>Количество игроков: 1-'
                     + item.fields.players + '<br/>Автор: ' + item.fields.author);
 

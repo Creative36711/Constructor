@@ -1,4 +1,4 @@
-var tdConfigurationInputs = [".td-delay", ".td-lives", ".td-text", ".td-min-reward", ".td-max-reward"]
+var tdConfigurationInputs = [".td-delay", ".td-lives", ".td-startup-money", ".td-price-palantir", ".td-price-experience", ".td-price-level", ".td-time-purchase", ".td-text", ".td-min-reward", ".td-max-reward"]
 var tdConfigurationButtons = [".td-create-horde", ".td-addWave"]
 var tdEditHordeInputs = [".td-quantity", ".td-quantity-line", ".td-start-position", ".td-distance-y", ".td-distance-x", ".td-speed"]
 var tdEditHordeButtons = [".td-add-unit", ".td-addVariations"]
@@ -8,6 +8,11 @@ buttonLock(tdConfigurationInputs, tdConfigurationButtons, "input", tdConfigurati
 buttonLock(tdConfigurationInputs, tdConfigurationButtons, "input", tdConfigurationInputs[2])
 buttonLock(tdConfigurationInputs, tdConfigurationButtons, "input", tdConfigurationInputs[3])
 buttonLock(tdConfigurationInputs, tdConfigurationButtons, "input", tdConfigurationInputs[4])
+buttonLock(tdConfigurationInputs, tdConfigurationButtons, "input", tdConfigurationInputs[5])
+buttonLock(tdConfigurationInputs, tdConfigurationButtons, "input", tdConfigurationInputs[6])
+buttonLock(tdConfigurationInputs, tdConfigurationButtons, "input", tdConfigurationInputs[7])
+buttonLock(tdConfigurationInputs, tdConfigurationButtons, "input", tdConfigurationInputs[8])
+buttonLock(tdConfigurationInputs, tdConfigurationButtons, "input", tdConfigurationInputs[9])
 buttonLock(tdConfigurationInputs, tdConfigurationButtons, "click", ".td-addWave")
 buttonLock(tdConfigurationInputs, tdConfigurationButtons, "click", ".td-cross-wave")
 buttonLock(tdConfigurationInputs, tdConfigurationButtons, "click", ".td-create-horde")

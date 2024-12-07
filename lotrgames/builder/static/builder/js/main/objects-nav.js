@@ -39,7 +39,7 @@ function listObjects(figure) {
 
     module = $('.form').attr('data-nav-module')
 
-    if (module == "Конфигурация карты" && $('.form').attr('data-context-menu') == "False") {
+    if (module == "Конфигурация" && $('.form').attr('data-context-menu') == "False") {
         if($('.container-configuration').attr('data-nav-index').includes("|")){
             editUnit(objectName, displayName)
         } else {

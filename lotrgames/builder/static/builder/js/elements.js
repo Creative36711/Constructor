@@ -12,16 +12,29 @@ function customCheckbox(parent, id, text){
     div3.text(text)
 }
 
-function numericInput(selector, text){
+function conditionsInput(selector, text, type, textEnd){
     $(document).on('click', selector, function() {
         $(this).val('')
     });
     $(document).on('change', selector, function() {
-        $(this).val(text + ": " + $(this).val())
+        if (textEnd == undefined) {
+            $(this).val(text + ": " + $(this).val())
+        } else {
+            $(this).val(text + ": " + $(this).val() + " " + textEnd)
+        }
     });
     $(document).on('input', selector, function() {
-        if (this.value.match(/[^0-9]/g)) {
-            this.value = this.value.replace(/[^0-9]/g, '');
+        if (type == "int") {
+            if (this.value.match(/[^0-9]/g)) {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            }
+        } else if (type == "float") {
+            if (this.value.match(/[^0-9.,]/g)) {
+                this.value = this.value.replace(/[^0-9.]/g, '');
+            }
+            if (this.value.match(/[,]/g)) {
+                this.value = this.value.replace(/[,]/g, '.');
+            }
         }
     });
 }

@@ -9,7 +9,9 @@ function navigation(from, to, head){
 
     if (module == "Конструктор карт") {
         updateMain()
-    } else if (module == "Конфигурация карты") {
+    } else if (module == "Отображение") {
+        $("#map-create").addClass('display-none')
+    } else if (module == "Конфигурация") {
         $("#map-create").addClass('display-none')
         $(".close-modal").removeClass('display-none')
         if($('.container-configuration').attr('data-nav-text').includes("Объекты")){
@@ -17,7 +19,7 @@ function navigation(from, to, head){
         } else {
             $("#map-save").removeClass('display-none')
         }
-        if ($('#game-mode').attr('value') == "Tower Defence") {
+        if ($('#game-mode').attr('value').split(":")[1].trim() == "Tower Defence") {
             $(".radio-horde").addClass('display-none')
         }
     } else {
@@ -29,7 +31,10 @@ function navigation(from, to, head){
 
 $(document).on('click', '.close-modal', function() {
     module = $('.form').attr('data-nav-module')
-    if($(".container-modes").hasClass("active")) {
+    if($(".container-display").hasClass("active")) {
+        $('.form').attr('data-nav-module', "Конструктор карт")
+        navigation(".container-display", ".container-main", "Конструктор карт")
+    } else if($(".container-modes").hasClass("active")) {
         $('.form').attr('data-nav-module', "Конструктор карт")
         navigation(".container-modes", ".container-main", "Конструктор карт")
     } else if($(".container-design").hasClass("active")) {
@@ -42,14 +47,14 @@ $(document).on('click', '.close-modal', function() {
         navigation("#td-configuration", ".container-main", "Конструктор карт")
     } else if($("#td-editHorde").hasClass("active")) {
         $('.container-configuration').attr('data-nav-text', "Tower Defence")
-        navigation("#td-editHorde", "#td-configuration", "Конфигурация карты")
+        navigation("#td-editHorde", "#td-configuration", "Конфигурация")
         $('#td-configuration .td-create-horde').parent()[$(".container-configuration").attr('data-nav-index')].scrollIntoView({block: "center", inline: "center"})
     } else if($(".list-factions").hasClass("active")) {
         $(".container-objects").addClass('display-none')
         if (module == "Редактировние объектов") {
             $('.form').attr('data-nav-module', "Конструктор карт")
             navigation(".list-factions", ".container-main", "Конструктор карт")
-        } else if (module == "Конфигурация карты"){
+        } else if (module == "Конфигурация"){
             var label = $('.container-configuration').attr('data-nav-text').split(" | ")
             $('.container-configuration').attr('data-nav-text', label[0] + " | " + label[1])
             navigation(".list-objects", "#td-editHorde", label[0] + " | " + label[1])

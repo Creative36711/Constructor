@@ -146,7 +146,7 @@ $(document).on('contextmenu', '.object figure', function(event){
   event.preventDefault();
   event.stopPropagation();
   $(".dropdown").remove()
-  if ($('.form').attr('data-nav-module') == "Конфигурация карты") {
+  if ($('.form').attr('data-nav-module') == "Конфигурация") {
     $('.form').attr('data-context-menu', "True")
     $(this).append(`
       <div class='dropdown'>

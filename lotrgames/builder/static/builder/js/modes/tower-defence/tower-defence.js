@@ -1,24 +1,22 @@
 deletingFields(".td-cross-wave", ".td-amountWave", "Количество волн")
 deletingFields(".td-cross-variations", ".td-amountVariations", "Вариации отрядов")
 
-numericInput('.td-quantity', "Количество")
-numericInput('.td-quantity-line', "Численность ряда")
-numericInput('.td-start-position', "Старт позиция")
-numericInput('.td-distance-y', "Дистанция по Y")
-numericInput('.td-distance-x', "Дистанция по X")
-numericInput('.td-min-reward', "Мин награда")
-numericInput('.td-max-reward', "Макс награда")
-numericInput('.td-delay', "Задержка")
-numericInput('.td-speed', "Скорость отряда")
-numericInput('.td-lives', "Жизней")
+conditionsInput('.td-delay', "Задержка", "int")
+conditionsInput('.td-lives', "Жизней", "int")
+conditionsInput('.td-startup-money', "Ресурсы", "int")
+conditionsInput('.td-price-palantir', "Цена палантира", "int")
+conditionsInput('.td-price-experience', "Цена опыта", "int")
+conditionsInput('.td-price-level', "Цена уровня", "int")
+conditionsInput('.td-time-purchase', "Время покупки", "int", "сек")
+conditionsInput('.td-min-reward', "Мин награда", "int")
+conditionsInput('.td-max-reward', "Макс награда", "int")
 
-$(document).on('change', '.td-max-reward', function() {
-    var minVal = Number($('.td-min-reward').val().replace(/[^0-9]/g,""))
-    var maxVal = Number($(this).val().replace(/[^0-9]/g,""))
-    if (maxVal < minVal) {
-        $(this).val("Макс награда: " + minVal)
-    }
-});
+conditionsInput('.td-quantity', "Количество", "int")
+conditionsInput('.td-quantity-line', "Численность ряда", "int")
+conditionsInput('.td-start-position', "Старт позиция", "int")
+conditionsInput('.td-distance-y', "Дистанция по Y", "int")
+conditionsInput('.td-distance-x', "Дистанция по X", "int")
+conditionsInput('.td-speed', "Скорость отряда", "int")
 
 $(document).on('change', '.td-delay', function() {
     $(this).val("Задержка: " + Math.round($(this).val().split(":")[1]/10)*10 + " сек")
@@ -31,6 +29,13 @@ function headerTowerDefence() {
             <div class='row'>
                 <input class='form-content td-delay' type='text' placeholder='Время до старта' autocomplete='off'>
                 <input class='form-content td-lives' type='text' placeholder='Количество жизней' autocomplete='off'>
+                <input class='form-content td-startup-money' type='text' placeholder='Стартовые ресурсы' autocomplete='off'>
+                <input class='form-content td-price-palantir' type='text' placeholder='Цена очков палантира' autocomplete='off'>
+            </div>
+            <div class='row'>
+                <input class='form-content td-price-experience' type='text' placeholder='Цена опыта войск' autocomplete='off'>
+                <input class='form-content td-price-level' type='text' placeholder='Цена уровня героя' autocomplete='off'>
+                <input class='form-content td-time-purchase' type='text' placeholder='Время покупки' autocomplete='off'>
                 <input class='form-content input-blocked td-amountWave' type='text' value='Количество волн: 0' disabled>
             </div>
             <input class='form-content button td-addWave' type='button' value='Добавить волну'>
@@ -93,7 +98,7 @@ $(document).on('click', '.td-addVariations', function() {
                     <input class='form-content td-distance-x' type='text' placeholder='Дистанция по X' autocomplete='off'>
                     <input class='form-content td-speed' type='text' placeholder='Скорость отряда' autocomplete='off'>
                     <input class='form-content input-blocked td-amountUnits' type='text' value='Вариации юнитов: 0' disabled>
-                    ${additionalButton("additional-button td-autofill", "Автозаполнение")}
+                    ${additionalButton("additional-button td-autofill", "По умолчанию")}
                 </div>
                 <div class='container td-list-units'></div>
                 <input class='form-content button td-add-unit' type='button' value='Добавить юнита'>

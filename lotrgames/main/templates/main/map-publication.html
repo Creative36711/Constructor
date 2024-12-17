@@ -1,0 +1,61 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load main_tags %}
+
+{% block content %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg spad" data-setbg="{% static 'main/img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h3>Категория: <span>{{title}}</span></h3>
+                        <div class="bt-option">
+                            <a href="{% url 'home' %}">Главная</a>
+                            <span>{{title}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="contact-text">
+                        <div class="contact-title">
+                            <h3>Публикация и обновление </h3>
+                            <p>Выберите доступные карты из списка и нажмите опубликовать<br>
+                            если ваша карта была опубликована ранее, она поднимется в списке на первое место.</p>
+                        </div>
+                        <div class="contact-form">
+                            <div class="dt-leave-comment">
+                                <form action="#">
+                                    {% csrf_token %}
+                                    <div class="input-list">
+                                        <input name="map" list="maps" />
+                                        <datalist id="maps">
+                                           <option value="Naples" />
+                                           <option value="London" />
+                                           <option value="Berlin" />
+                                           <option value="New York" />
+                                           <option value="Frattamaggiore" />
+                                        </datalist>
+                                    </div>
+                                    <textarea placeholder="Здесь вы можете описать свою карту и вести журнал изменений"></textarea>
+                                    <button type="submit">Опубликовать</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--            {% show_sidebar %}-->
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section End -->
+{% endblock %}

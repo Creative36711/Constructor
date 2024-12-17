@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 {% load main_tags %}
-<html lang="zxx">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Amin Template">
@@ -48,7 +48,14 @@
                         {% endfor %}
                     </ul>
                 </li>
-                <li><a href="{% url 'builder' %}">Конструктор карт</a></li>
+                <li><a href="{% url 'maps' %}">Карты <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown">
+                        {% for c in modes %}
+                        <li><a href="{{ c.get_absolute_url }}">{{c.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li><a {% if authenticated %} href="{% url 'builder' %}" {% else %} href="{% url 'login' %}" {% endif %}>Конструктор карт</a></li>
                 <li><a href="#">Мод <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown">
                         <li><a href="https://ennorathmod.ru/" target="_blank">Сайт</a></li>
@@ -59,6 +66,7 @@
                         <li><a href="https://vk.com/ennorathmod" target="_blank">Вконтакте</a></li>
                     </ul>
                 </li>
+                <li><a href="https://lotrgames.ru/" target="_blank"><span>Игры ЛОТР</span></a></li>
             </ul>
         </div>
         <div id="mobile-menu-wrap"></div>
@@ -71,17 +79,6 @@
             <a href="https://discord.com/channels/278875881525477377/1189583044252803123" target="_blank"><i class="fa-brands fa-discord"></i></a>
             <a href="https://t.me/+MpR6XiJtLBxkMjVi" target="_blank"><i class="fa-brands fa-telegram"></i></a>
         </div>
-        <div class="hw-insta-media">
-            <div class="section-title">
-                <h5>Изображения</h5>
-            </div>
-            <div class="insta-pic">
-                <img src="img/instagram/ip-1.jpg" alt="">
-                <img src="img/instagram/ip-2.jpg" alt="">
-                <img src="img/instagram/ip-3.jpg" alt="">
-                <img src="img/instagram/ip-4.jpg" alt="">
-            </div>
-        </div>
     </div>
     <!-- Humberger Menu End -->
 
@@ -93,10 +90,14 @@
                     <div class="col-lg-6 col-md-8">
                         <div class="ht-widget">
                             <ul>
-                                <li><i class="fa fa-sun-o"></i> <span>20<sup>c</sup></span> Москва</li>
-                                <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
-                                <li class="signup-switch signup-open"><i class="fa fa-sign-out"></i> Вход / Зарегистрироваться
-                                </li>
+                                <li><i class="fa fa-gift"></i>Поддержать</li>
+                                <li><i class="fa-solid fa-calendar-days"></i><time></time></li>
+                                {% if request.user.is_authenticated %}
+                                    <li><i class="fa fa-user"></i>{{ user.username }}</li>
+                                    <li class="signup-switch signup-open"><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i>Выйти</a></li>
+                                {% else %}
+                                    <a href="{% url 'login' %}"><li class="signup-switch signup-open"><i class="fa fa-sign-in"></i>Войти</li></a>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
@@ -106,8 +107,6 @@
                             <a href="https://www.twitch.tv/1fatcat1" target="_blank"><i class="fa-brands fa-twitch"></i></a>
                             <a href="https://discord.com/channels/278875881525477377/1189583044252803123" target="_blank"><i class="fa-brands fa-discord"></i></a>
                             <a href="https://t.me/+MpR6XiJtLBxkMjVi" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-                            <a href="https://ennorathmod.ru/" target="_blank"><i class="fa-solid fa-cloud"></i></a>
-                            <a href="https://discord.com/users/creative6158/" target="_blank"><i class="fa-solid fa-address-card"></i></a>
                         </div>
                     </div>
                 </div>
@@ -134,16 +133,28 @@
                     <ul>
 
                         <li class="{% if title == 'Главная страница' %} active {% endif %}"><a href="{% url 'home' %}"><span>Главная</span></a></li>
-
                         <li class="{% if title == 'Новости' %} active {% endif %}"><a href="{% url 'news' %}"><span>Новости <i class="fa fa-angle-down"></i></span></a>
                             <ul class="dropdown">
                                 {% for c in cats %}
-                                <li><a href="{{ c.get_absolute_url }}">{{c.name}}</a></li>
+                                    {% if c.news__count > 0 %}
+                                        <li><a href="{{ c.get_absolute_url }}">{{c.name}}</a></li>
+                                    {% endif %}
                                 {% endfor %}
                             </ul>
                         </li>
-                        <li><a href="{% url 'builder' %}"><span>Конструктор карт</span></a></li>
-                        <li><a href="#"><span>Мод <i class="fa fa-angle-down"></i></span></a>
+                        <li class="{% if title == 'Карты' %} active {% endif %}"><a href="{% url 'maps' %}"><span>Карты <i class="fa fa-angle-down"></i></span></a>
+                            <ul class="dropdown">
+                                {% for c in modes %}
+                                    {% if c.maps__count > 0 %}
+                                        <li><a href="{{ c.get_absolute_url }}">{{c.name}}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li>
+                            <a {% if authenticated %} href="{% url 'builder' %}" {% else %} href="{% url 'login' %}" {% endif %}><span>Конструктор карт</span></a>
+                        </li>
+                        <li><a href="#"><span>Эннорат мод <i class="fa fa-angle-down"></i></span></a>
                             <ul class="dropdown">
                                 <li><a href="https://ennorathmod.ru/" target="_blank">Сайт</a></li>
                                 <li><a href="https://discord.com/channels/278875881525477377/1189583044252803123" target="_blank">Дискорд</a></li>
@@ -153,6 +164,7 @@
                                 <li><a href="https://vk.com/ennorathmod" target="_blank">Вконтакте</a></li>
                             </ul>
                         </li>
+                        <li><a href="https://lotrgames.ru/" target="_blank"><span>Игры ЛОТР</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -176,7 +188,7 @@
                         <div class="fa-logo">
                             <a href="#"><img src="{% static 'main/img/logo.png' %}" alt=""></a>
                         </div>
-                            <p>Разработка карт и сабмодов на игру The Lord of the Rings: The Battle for Middle‑earth с модом Ennorath.</p>
+                            <p>Разработка карт и сабмодов на игру The Lord of the Rings: The Battle for Middle-earth II: The Rise of the Witch-king с модом Ennorath.</p>
                         <div class="fa-social">
                             <a href="https://www.youtube.com/@FatCatBFME" target="_blank"><i class="fa-brands fa-youtube"></i></a>
                             <a href="https://www.twitch.tv/1fatcat1" target="_blank"><i class="fa-brands fa-twitch"></i></a>
@@ -188,34 +200,20 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="editor-choice">
                         <div class="section-title">
-                            <h5>Последние обновления</h5>
+                            <h5>Последние новости</h5>
                         </div>
+                        {% for p in latestNews %}
                         <div class="ec-item">
-                            <div class="ec-pic">
-                                <img src="img/trending/editor-1.jpg" alt="">
-                            </div>
                             <div class="ec-text">
-                                <h6><a href="#">A Monster Prom poster got hijacked for a Papa Roach concert...</a>
+                                <h6><a href="{{ p.get_absolute_url }}">{{p.title}}</a>
                                 </h6>
                                 <ul>
-                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
-                                    <li><i class="fa fa-comment-o"></i> 12</li>
+                                    <li>Автор: <span> {{p.author}}</span></li>
+                                    <li>Дата: <i class="fa-solid fa-calendar-days"></i> {{p.time_create|date:"d-m-Y H:i:s"}}</li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="ec-item">
-                            <div class="ec-pic">
-                                <img src="img/trending/editor-2.jpg" alt="">
-                            </div>
-                            <div class="ec-text">
-                                <h6><a href="#">Facebook wants to read your thoughts with its augmented...</a>
-                                </h6>
-                                <ul>
-                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
-                                    <li><i class="fa fa-comment-o"></i> 12</li>
-                                </ul>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -224,17 +222,9 @@
                             <h5>Теги</h5>
                         </div>
                         <div class="tag-list">
-                            <a href="#"><span>Gaming</span></a>
-                            <a href="#"><span>Platform</span></a>
-                            <a href="#"><span>Playstation</span></a>
-                            <a href="#"><span>Hardware</span></a>
-                            <a href="#"><span>Reviews</span></a>
-                            <a href="#"><span>Simulation</span></a>
-                            <a href="#"><span>Strategy</span></a>
-                            <a href="#"><span>Scientific</span></a>
-                            <a href="#"><span>References</span></a>
-                            <a href="#"><span>Role-playing</span></a>
-                            <a href="#"><span>Adventurea</span></a>
+                            {% for c in cats %}
+                            <a href="{{ c.get_absolute_url }}"><span>{{c.name}}</span></a>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -249,7 +239,7 @@
                     <div class="col-lg-6">
                         <div class="ca-links">
                             <a href="#">О проекте</a>
-                            <a href="#">Донат</a>
+                            <a href="#">Поддержать</a>
                             <a href="#">Связаться</a>
                             <a href="#">Помощь</a>
                         </div>
@@ -259,35 +249,6 @@
         </div>
     </footer>
     <!-- Footer Section End -->
-
-    <!-- Sign Up Section Begin -->
-    <div class="signup-section">
-        <div class="signup-close"><i class="fa fa-close"></i></div>
-        <div class="signup-text">
-            <div class="container">
-                <div class="signup-title">
-                    <h2>Регистрация аккаунта</h2>
-                    <p>Заполните форму ниже</p>
-                </div>
-                <form action="#" class="signup-form">
-                    <div class="sf-input-list">
-                        <input type="text" class="input-value" placeholder="Никнейм*">
-                        <input type="text" class="input-value" placeholder="Пароль">
-                        <input type="text" class="input-value" placeholder="Подтвердите пароль">
-                        <input type="text" class="input-value" placeholder="Email">
-                    </div>
-                    <div class="radio-check">
-                        <label for="rc-agree">Я согласен с условиями
-                            <input type="checkbox" id="rc-agree">
-                            <span class="checkbox"></span>
-                        </label>
-                    </div>
-                    <button type="submit"><span>ЗАРЕГИСТРИРОВАТЬСЯ</span></button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- Sign Up Section End -->
 
     <!-- Search model Begin -->
     <div class="search-model">
@@ -309,6 +270,7 @@
     <script src="{% static 'main/js/jquery.slicknav.js' %}"></script>
     <script src="{% static 'main/js/owl.carousel.min.js' %}"></script>
     <script src="{% static 'main/js/main.js' %}"></script>
+    <script src="{% static 'main/js/index.js' %}"></script>
 </body>
 
 </html>

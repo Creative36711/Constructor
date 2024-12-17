@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<!-- Sign Up Section Begin -->
+<div class="signup-section">
+    <div class="signup-text">
+        <div class="container">
+            <div class="signup-title">
+                <h2>Регистрация аккаунта</h2>
+                <p>Заполните форму ниже</p>
+            </div>
+            <form action="#" class="signup-form" method="post">
+                {% csrf_token %}
+                <div class="sf-input-list">
+                    {% for f in form %}
+                        {{ f }}
+                        <div class="form-error">{{ f.errors }}</div>
+                    {% endfor %}
+                </div>
+                <button type="submit"><span>ЗАРЕГИСТРИРОВАТЬСЯ</span></button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Sign Up Section End -->
+
+{% endblock %}

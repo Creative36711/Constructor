@@ -25,7 +25,7 @@
     <section class="categories-list-section spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 p-0">
+                <div class="col-lg-12 p-0">
                     {% for p in posts %}
                     <div class="cl-item">
                         <div class="cl-pic">
@@ -36,7 +36,7 @@
                                 <h5><a href="{{ p.get_absolute_url }}">{{p.title}}</a></h5>
                                 <ul>
                                     <li>Автор: <span> {{p.author}}</span></li>
-                                    <li>Обновление: <i class="fa-solid fa-calendar-days"></i> {{p.time_update|date:"d-m-Y H:i:s"}}</li>
+                                    <li>Дата: <i class="fa-solid fa-calendar-days"></i> {{p.time_create|date:"d-m-Y H:i:s"}}</li>
                                     <li>Просмотры: <i class="fa-solid fa-eye"></i> {{p.views}}</li>
                                 </ul>
                                 {% autoescape off %}
@@ -45,11 +45,25 @@
                             </div>
                     </div>
                     {% endfor %}
-                    <div class="pagination-item" id="pagination-item">
-
-                    </div>
+                    {% if page_obj.has_other_pages %}
+                        <div class="pagination-item" id="pagination-item">
+                            {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}#pagination-item"><span>&lt;</span></a>
+                            {% endif %}
+                            {% for p in page_obj.paginator.page_range %}
+                                {% if page_obj.number == p %}
+                                    <a href="#" class="active"><span>{{ p }}</span></a>
+                                {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                                    <a href="?page={{ p }}#pagination-item"><span>{{ p }}</span></a>
+                                {% endif %}
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.next_page_number }}#pagination-item"><span>&gt;</span></a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
                 </div>
-            {% show_sidebar %}
+<!--            {% show_sidebar %}-->
             </div>
         </div>
     </section>

@@ -9,14 +9,12 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="details-hero-text">
-                        {% for t in tags %}
-                        <div class="label"><span>{{t}}</span></div>
-                        {% endfor %}
+                        <div class="label"><span>{{post.cat}}</span></div>
                         <h3>{{post.title}}</h3>
                         <ul>
-                            <li>by <span>{{post.author}}</span></li>
-                            <li><i class="fa fa-clock-o"></i> {{post.time_update|date:"d-m-Y H:i:s"}}</li>
-                            <li><i class="fa fa-comment-o"></i> {{post.views}}</li>
+                            <li>Автор <span>{{post.author}}</span></li>
+                            <li><i class="fa-solid fa-calendar-days"></i> {{post.time_create|date:"d-m-Y H:i:s"}}</li>
+                            <li class="views"><i class="fa-solid fa-eye"></i> {{post.views}}</li>
                         </ul>
                     </div>
                 </div>
@@ -29,7 +27,7 @@
     <section class="details-post-section spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 p-0">
+                <div class="col-lg-12 p-0">
                     <div class="details-text">
                         <div class="dt-item">
                             {% autoescape off %}
@@ -43,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                {% show_sidebar %}
+<!--                {% show_sidebar %}-->
             </div>
         </div>
     </section>

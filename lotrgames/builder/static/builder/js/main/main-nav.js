@@ -20,25 +20,29 @@ function updateMain() {
         $("#map-design").addClass('input-blocked')
         $("#map-configuration").addClass('input-blocked')
         $("#game-mode").removeClass('input-blocked')
-        $("#object-editor").removeClass('input-blocked')
         $("#map-design").val('Дизайн')
         $("#map-configuration").val('Конфигурация')
         $("#map-design").attr("disabled", "disabled")
         $("#map-configuration").attr("disabled", "disabled")
         $("#game-mode").removeAttr('disabled')
-        $("#object-editor").removeAttr('disabled')
+        $("#object-editor").attr("disabled", "disabled")
+        $("#object-editor").addClass('input-blocked')
     }
     if ($('#game-mode').attr('value') != "Режим" && $('#map-design').attr('value') == "Дизайн") {
         $("#map-configuration").addClass('input-blocked')
         $("#map-design").removeClass('input-blocked');
         $("#map-configuration").attr("disabled", "disabled")
         $("#map-design").removeAttr('disabled')
+        $("#object-editor").attr("disabled", "disabled")
+        $("#object-editor").addClass('input-blocked')
     }
     if ($('#game-mode').attr('value') != "Режим" && $('#map-design').attr('value') != "Дизайн") {
         $("#map-configuration").removeClass('input-blocked')
         $("#map-design").removeClass('input-blocked');
         $("#map-configuration").removeAttr('disabled')
         $("#map-design").removeAttr('disabled')
+        $("#object-editor").removeClass('input-blocked')
+        $("#object-editor").removeAttr('disabled')
     }
 }
 

@@ -1,0 +1,79 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load main_tags %}
+
+{% block content %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg spad" data-setbg="{% static 'main/img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h3>Категория: <span>{{title}}</span></h3>
+                        <div class="bt-option">
+                            <a href="{% url 'home' %}">Главная</a>
+                            <span>{{title}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Categories Grid Section Begin -->
+    <section class="categories-grid-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 p-0">
+                    {% if authenticated %}
+                        <div class="button-borders">
+                            <a href="{% url 'map-publication' %}"><button class="primary-button">Опубликовать карту</button></a>
+                        </div>
+                    {% endif %}
+                    <div class="row">
+                        {% for p in maps %}
+                        <div class="col-lg-6">
+                            <div class="cg-item">
+                                <div class="cg-pic set-bg" data-setbg="{{p.photo.url}}">
+                                    <div class="label"><span>{{p.mode}}</span></div>
+                                </div>
+                                <div class="cg-text">
+                                    <h5><a href="{{ p.get_absolute_url }}">{{p.title}}</a></h5>
+                                    <ul>
+                                        <li>Автор: <span> {{p.author}}</span></li>
+                                        <li>Обновление: <i class="fa-solid fa-calendar-days"></i> {{p.time_update|date:"d-m-Y H:i:s"}}</li>
+                                        <li>Загрузки: <i class="fa fa-cloud-download"></i> {{p.downloads}}</li>
+                                    </ul>
+                                    {% autoescape off %}
+                                    <p>{{p.content|truncatewords:25}}</p>
+                                    {% endautoescape %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                    {% if page_obj.has_other_pages %}
+                        <div class="pagination-item" id="pagination-item">
+                            {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}#pagination-item"><span>&lt;</span></a>
+                            {% endif %}
+                            {% for p in page_obj.paginator.page_range %}
+                                {% if page_obj.number == p %}
+                                    <a href="#" class="active"><span>{{ p }}</span></a>
+                                {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                                    <a href="?page={{ p }}#pagination-item"><span>{{ p }}</span></a>
+                                {% endif %}
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.next_page_number }}#pagination-item"><span>&gt;</span></a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+<!--            {% show_sidebar %}-->
+            </div>
+        </div>
+    </section>
+    <!-- Categories Grid Section End -->
+{% endblock %}

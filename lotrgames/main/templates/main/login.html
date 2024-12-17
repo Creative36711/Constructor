@@ -1,0 +1,34 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<!-- Sign Up Section Begin -->
+<div class="signup-section">
+    <div class="signup-text">
+        <div class="container">
+            <div class="signup-title">
+                <h2>Войти в аккаунт</h2>
+                <p>Заполните форму ниже</p>
+            </div>
+            <form action="#" class="signup-form" method="post">
+                {% csrf_token %}
+
+                <div class="form-error">{{ form.non_field_errors }}</div>
+
+                <div class="sf-input-list">
+                    {% for f in form %}
+                        {{ f }}
+                        <div class="form-error">{{ f.errors }}</div>
+                    {% endfor %}
+                </div>
+                <div class="no-account">
+                    <a href="{% url 'register' %}">Нет аккаунта?</a>
+                </div>
+                <button type="submit"><span>ВОЙТИ</span></button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Sign Up Section End -->
+
+{% endblock %}
